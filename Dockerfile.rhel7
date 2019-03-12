@@ -5,6 +5,11 @@ MAINTAINER Siamak Sadeghianfar <ssadeghi@redhat.com>
 ENV GRADLE_VERSION=4.9
 
 USER root
+#RUN yum repolist
+#RUN yum-config-manager --enable rhel-7-server-extras-rpms
+
+#RUN yum install -y pcsc-lite-devel
+RUN yum install -y java-1.8.0-openjdk java-1.8.0-openjdk-devel --skip-broken
 
 RUN curl -skL -o /tmp/gradle-bin.zip https://services.gradle.org/distributions/gradle-$GRADLE_VERSION-bin.zip && \
     mkdir -p /opt/gradle && \
@@ -14,4 +19,5 @@ RUN curl -skL -o /tmp/gradle-bin.zip https://services.gradle.org/distributions/g
 RUN chown -R 1001:0 /opt/gradle && \
     chmod -R g+rw /opt/gradle
 
+RUN export JAVA_HOME=/usr/lib/jvm/java-1.8.0-openjdk
 USER 1001
