@@ -1,0 +1,4 @@
+[auth]
+mingus.prefix = https://path to your repo goes here
+mingus.username = scm user name goes here
+mingus.password = password goes here
